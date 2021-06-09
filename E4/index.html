@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise 4</title>
+  <meta name="description" content="HTML, CSS Positioning, Design abilities, Basic Javascript"/>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="card">
+    <a href="#" class="button open-modal shaking">Push the button</a>
+  </div>
+  
+  <div class="modal">
+    <div class="modal-window">
+      <div class="ex close-modal">✖</div>
+      <h1>Woah, that was hard!</h1>
+      <p>Next time try pushing the button softer</p>
+
+      <div class="buttons">
+        <a href="#" class="button close-button">Cancel</a>
+        <a href="#" class="button">Ok</a>
+      </div>
+    </div>
+  </div>
+
+<script>
+  const modalWindow = document.querySelector(".modal");
+  const openModal = document.querySelector(".open-modal");
+  const closeModal = document.querySelector(".close-modal");
+  const closeButton = document.querySelector(".close-button");
+  
+
+  openModal.addEventListener('click', function(e){
+    e.preventDefault();
+    modalWindow.classList.add("visible");
+  })
+
+  closeModal.addEventListener('click', function(e){
+    e.preventDefault();
+    modalWindow.classList.remove("visible");
+  })
+
+  closeButton.addEventListener('click', function(e){
+    e.preventDefault();
+    modalWindow.classList.remove("visible");
+  })
+
+  document.addEventListener('keydown', function(e) {
+      let keyCode = e.keyCode;
+      if (keyCode === 27) {
+        modalWindow.classList.remove('visible');
+      }
+  });
+
+// This one works with both close options with a single function
+// but listens for every click on the page so using separate ones
+// seems to be better and cleaner for this case.
+
+// document.addEventListener('click', function (event) {
+// if (!event.target.matches('.close-modal')) return;
+// modalWindow.classList.remove("visible");
+// }, false);
+</script>
+
+</body>
+</html>
