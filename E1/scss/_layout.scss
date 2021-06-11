@@ -1,0 +1,134 @@
+.row {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: $spacing;
+}
+
+.container {
+  width: 100%;
+  padding: 0 $spacing;
+  margin: 0 auto;
+}
+
+@each $size in $ws {
+  @media screen and (min-width: map-get($w,$size)) {
+    .container {
+      width: #{map-get($w,$size)};
+    }
+  }
+}
+
+@for $i from 1 through $columns {
+  .col-#{$i * 1}{
+    padding: 0 $spacing;
+    position: relative;
+    min-height: 1px;
+    width: 100%;
+    grid-column: span $i;
+  }
+}
+
+@for $i from 1 through $columns {
+  @each $size in $ws {
+    .col-#{$size}-#{$i * 1}{
+      padding: 0 $spacing;
+      position: relative;
+      min-height: 1px;
+      width: 100%;
+      grid-column: span $i;
+    }
+  }
+}
+
+.col {
+  max-width: 100%;
+  grid-column: span 1fr;
+}
+
+@for $i from 1 through $columns {
+  .col-#{$i * 1} {
+    grid-column: span $i;
+  }
+}
+
+@for $i from 1 through $columns - 1 {
+  .offset-#{$i * 1} {
+    grid-column-start: $i * 1;
+  }
+}
+
+@media all and (min-width: map-get($w,sm)) {
+  @for $i from 1 through $columns {
+    .col-sm-#{$i * 1} {
+      grid-column: span $i;
+    }
+  }
+
+  @for $i from 1 through $columns - 1 {
+    .offset-sm-#{$i * 1} {
+      grid-column-start: $i * 1;
+    }
+  }
+}
+
+@media all and (min-width: map-get($w,md)) {
+  @for $i from 1 through $columns {
+    .col-md-#{$i * 1} {
+      grid-column: span $i;
+    }
+  }
+
+  @for $i from 1 through $columns - 1 {
+    .offset-md-#{$i * 1} {
+      grid-column-start: $i * 1;
+    }
+  }
+}
+
+@media all and (min-width: map-get($w,lg)) {
+  @for $i from 1 through $columns {
+    .col-lg-#{$i * 1} {
+      grid-column: span $i;
+    }
+  }
+
+  @for $i from 1 through $columns - 1 {
+    .offset-lg-#{$i * 1} {
+      grid-column-start: $i * 1;
+    }
+  }
+}
+
+@media all and (min-width: map-get($w,xl)) {
+  @for $i from 1 through $columns {
+    .col-xl-#{$i * 1} {
+      grid-column: span $i;
+    }
+  }
+
+  @for $i from 1 through $columns - 1 {
+    .offset-xl-#{$i * 1} {
+      grid-column-start: $i * 1;
+    }
+  }
+}
+
+.justify-content-center {
+  justify-content: center !important;
+}
+
+@each $size in $ws {
+  .#{$size}-justify-content-center {
+    justify-content: center;
+  }
+}
+
+.align-items-center {
+  align-items: center !important;
+}
+
+@each $size in $ws {
+  .#{$size}-align-items-center {
+    align-items: center !important;
+  }
+}

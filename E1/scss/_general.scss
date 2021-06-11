@@ -1,0 +1,21 @@
+html {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+.center {
+  text-align: center;
+}
+
+.border {
+  border: 1px solid #000;
+}
